@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<ruleset name="PSR2 + Maagiline">
+    <description>Maagiline coding standard</description>
+    <rule ref="PSR2"/>
+
+    <!-- Require 4 indents for arrays-->
+    <rule ref="Generic.Arrays.ArrayIndent">
+        <properties>
+            <property name="indent" value="4" />
+        </properties>
+        <!-- All non-psr2 rules will be treated as warnings, because some Laravel-generated files would fail our check -->
+        <type>warning</type>
+    </rule>
+
+    <!-- NO space after NOT operator -->
+    <rule ref="Generic.Formatting.SpaceAfterNot">
+        <properties>
+            <property name="spacing" value="0" />
+        </properties>
+        <type>warning</type>
+    </rule>
+
+    <!-- Require spaces after string concatenation -->
+    <rule ref="Squiz.Strings.ConcatenationSpacing">
+        <properties>
+            <property name="spacing" value="1" />
+        </properties>
+        <type>warning</type>
+    </rule>
+
+    <!-- Require one empty line inbetween functions and no empty lines before first and after last function -->
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing">
+        <properties>
+            <property name="spacing" value="1" />
+            <property name="spacingBeforeFirst" value="0" />
+            <property name="spacingAfterLast" value="0" />
+        </properties>
+    </rule>
+
+    <!-- Get SLEVOMAT coding standards -->
+    <config name="installed_paths" value="../../slevomat/coding-standard"/><!-- relative path from PHPCS source location -->
+
+    <!-- Require typehints, NO space before return typehint, NO long typehints and ? when nullable -->
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversablePropertyTypeHintSpecification"/>
+        <type>warning</type>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing">
+        <type>warning</type>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints">
+        <type>warning</type>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue">
+        <type>warning</type>
+    </rule>
+
+    <!-- Require commas after last array element -->
+    <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma">
+        <type>warning</type>
+    </rule>
+
+    <!-- NO useless or unused variables -->
+    <rule ref="SlevomatCodingStandard.Variables.UselessVariable">
+        <type>warning</type>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Variables.UnusedVariable">
+        <type>warning</type>
+    </rule>
+
+    <!-- Require strict operators === and !== -->
+    <rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators">
+        <type>warning</type>
+    </rule>
+
+    <!-- Require Throwable instead of Exception -->
+    <rule ref="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly">
+        <type>warning</type>
+    </rule>
+
+    <!-- Require at least one namespace and empty lines around them -->
+    <rule ref="SlevomatCodingStandard.Namespaces.RequireOneNamespaceInFile">
+        <type>warning</type>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.NamespaceSpacing">
+        <properties>
+            <property name="linesCountBeforeNamespace" value="1"/>
+            <property name="linesCountAfterNamespace" value="1"/>
+        </properties>
+        <type>warning</type>
+    </rule>
+
+    <file>app/</file>
+    <exclude-pattern>vendor</exclude-pattern>
+    <exclude-pattern>resources</exclude-pattern>
+    <exclude-pattern>database/</exclude-pattern>
+    <exclude-pattern>storage/</exclude-pattern>
+    <exclude-pattern>node_modules/</exclude-pattern>
+    <!-- Show progression -->
+    <arg value="p"/>
+</ruleset>
