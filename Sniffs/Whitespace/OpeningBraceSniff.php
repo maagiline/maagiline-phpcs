@@ -1,6 +1,6 @@
 <?php
 
-namespace PHP_CodeSniffer\Standards\Generic\Sniffs\Functions;
+namespace Maagiline\Sniffs\Whitespace;
 
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
