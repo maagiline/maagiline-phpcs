@@ -83,7 +83,7 @@ class OpeningBraceSniff implements Sniff
             $phpcsFile->recordMetric($stackPtr, 'Blank lines after opening brace', $gap);
 
             $error = 'Blank line found after opening brace';
-            $fix   = $phpcsFile->addFixableError($error, $scopeOpener, 'SpacingAfterOpen');
+            $fix   = $phpcsFile->addFixableError($error, $firstContent, 'SpacingAfterOpen');
 
             if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();

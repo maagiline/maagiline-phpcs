@@ -1,6 +1,6 @@
 {
   "name": "maagiline/maagiline-phpcs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "library",
   "description": "Maagiline PHP coding standard",
   "keywords": ["phpcs", "codesniffer", "linter", "lint"],
