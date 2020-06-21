@@ -1,6 +1,6 @@
 {
   "name": "maagiline/maagiline-phpcs",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "type": "library",
   "description": "Maagiline PHP coding standard",
   "keywords": ["phpcs", "codesniffer", "linter", "lint"],
@@ -15,8 +15,8 @@
     }
   ],
   "require": {
-    "squizlabs/php_codesniffer": "3.*",
-    "slevomat/coding-standard": "~5.0",
+    "squizlabs/php_codesniffer": "^3.5.5",
+    "slevomat/coding-standard": "~6.3",
     "webthink/codesniffer": "^2.1"
   }
 }

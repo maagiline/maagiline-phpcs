@@ -1,6 +1,60 @@
 # Maagiline PHP coding standard
 Use this coding standard in your local development environment, as well as in CI pipelines.
 
+## Add to your project
+First, install via composer:
+```
+composer require maagiline/maagiline-phpcs
+```
+
+Then, create a ruleset in you project directory. The ruleset should:
+- Refer to the maagiline-phpcs ruleset for instructions
+- Specify which files / directories to scan
+
+Here's an example of a ruleset.xml that you should use for a Laravel project:
+```
+<?xml version="1.0"?>
+<ruleset>
+    <rule ref="./vendor/maagiline/maagiline-phpcs"/>
+
+    <!-- Specify which directories to scan -->
+    <file>./app/</file>
+    <file>./database/</file>
+
+    <!-- Dont require namespace in migrations -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <exclude-pattern>./database/</exclude-pattern>
+    </rule>
+</ruleset>
+```
+## Conflicts with framework
+When adding to a project that's built on top of a framework (such as Laravel), please note that some files that are provided by the framework may not be in accordance with the ruleset. Problems arise when you wish to fix files that are extending some framework files - the fixed function definition may not be in accordance with the extended class:
+```
+// Before:
+/**
+ * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+ * @return void
+ */
+protected function schedule($schedule)
+
+// After fixing:
+protected function schedule(Schedule $schedule): void
+```
+
+In the above example, the extended class does not specify a return value for this function, so an exception will be thrown. In this case, we should, instead of fixing, tell phpcs to ignore this issue:
+```
+// Before:
+/**
+ * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+ * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+ * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
+ * @return void
+ */
+protected function schedule($schedule)
+```
+
+Now, phpcs will not consider this as an error. You're good to go!
+
 ## Set up in PhpStorm
 ### Set up code sniffing
 Code sniffing will instruct your editor to display style issues in your code.
@@ -15,7 +69,7 @@ Code sniffing will instruct your editor to display style issues in your code.
 ![Codesniffer settings in PhpStorm](./docs/codesniffer-settings.png "Codesniffer settings in PhpStorm")
 
 ### Set up code beautifier
-Some errors can be fixed automatically by `phpcbf`. Wanna go full-on badass? Set up PhpStorm to fix your style issues whenever a file is saved.
+Some errors can be fixed automatically by `phpcbf`. Wanna go full-on badass? Set up PhpStorm to fix your style issues automatically.
 
 #### Set up phpcbf as external tool
 First, add phpcbf under "External tools".
