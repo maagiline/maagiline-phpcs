@@ -43,7 +43,7 @@
     </rule>
 
     <!-- relative path from PHPCS source location -->
-    <config name="installed_paths" value="../../slevomat/coding-standard,../../webthink/codesniffer/src/Webthink"/>
+    <config name="installed_paths" value="../../slevomat/coding-standard"/>
 
     <!-- Require typehints, NO space before return typehint, NO long typehints and ? when nullable -->
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
@@ -107,11 +107,6 @@
     </rule>
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
         <type>warning</type>
-    </rule>
-
-    <!-- Prevent consecutive empty lines inside classes -->
-    <rule ref="Webthink.Whitespace.ClassEmptyLines">
-        <type>error</type>
     </rule>
 
     <!-- Show progression -->

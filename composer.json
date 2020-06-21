@@ -16,7 +16,6 @@
   ],
   "require": {
     "squizlabs/php_codesniffer": "^3.5.5",
-    "slevomat/coding-standard": "~6.3",
-    "webthink/codesniffer": "^2.1"
+    "slevomat/coding-standard": "~6.3"
   }
 }
