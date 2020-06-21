@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ruleset name="PSR2 + Maagiline">
     <description>Maagiline coding standard</description>
-    <rule ref="PSR2"/>
+    <rule ref="PSR12"/>
 
     <!-- Require 4 indents for arrays-->
     <rule ref="Generic.Arrays.ArrayIndent">
@@ -42,8 +42,8 @@
         <type>warning</type>
     </rule>
 
-    <!-- Get SLEVOMAT coding standards -->
-    <config name="installed_paths" value="../../slevomat/coding-standard"/><!-- relative path from PHPCS source location -->
+    <!-- relative path from PHPCS source location -->
+    <config name="installed_paths" value="../../slevomat/coding-standard,../../webthink/codesniffer/src/Webthink"/>
 
     <!-- Require typehints, NO space before return typehint, NO long typehints and ? when nullable -->
     <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
@@ -94,6 +94,25 @@
             <property name="linesCountAfterNamespace" value="1"/>
         </properties>
         <type>warning</type>
+    </rule>
+
+    <!-- Prevent consecutive empty lines (doesn't count classes) -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false"/>
+        </properties>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+        <type>warning</type>
+    </rule>
+
+    <!-- Prevent consecutive empty lines inside classes -->
+    <rule ref="Webthink.Whitespace.ClassEmptyLines">
+        <type>error</type>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingPropertyTypeHint">
+        <severity>0</severity>
     </rule>
 
     <file>../../../app/</file>
