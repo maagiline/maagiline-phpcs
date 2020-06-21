@@ -64,7 +64,7 @@ Code sniffing will instruct your editor to display style issues in your code.
 1. In PhpStorm settings, navigate to Editor > Inspections > Quality tools > PHP_Codesniffer validation
 1. Check this option
 1. Set Severity to "Error"
-1. In Coding standard, select custom and select `./vendor/maagiline/maagiline-phpcs/ruleset.xml`
+1. In Coding standard, select custom and select `./phpcs-ruleset.xml`
 
 ![Codesniffer settings in PhpStorm](./docs/codesniffer-settings.png "Codesniffer settings in PhpStorm")
 
@@ -80,7 +80,7 @@ First, add phpcbf under "External tools".
 Name:               phpcbf
 Description:        Fixed phpcs issues automatically
 Program:            $ProjectFileDir$/vendor/squizlabs/php_codesniffer/bin/phpcbf
-Arguments:          --standard=$ProjectFileDir$/vendor/maagiline/maagiline-phpcs/ruleset.xml $FileDir$/$FileName$
+Arguments:          --standard=$ProjectFileDir$/phpcs-ruleset.xml $FileDir$/$FileName$
 Working directory:  $ProjectFileDir$
 
 Under 'Advanced options', uncheck "Open console for tool output".
@@ -101,10 +101,10 @@ Now, whenever in a file that has errors, tap this to run phpcbf. All errors that
 ## Command line tools
 To list errors:
 ```
-./vendor/bin/phpcs --standard=./vendor/maagiline/maagiline-phpcs/ruleset.xml
+./vendor/bin/phpcs --standard=./phpcs-ruleset.xml
 ```
 
 Some errors can be fixed automatically. To fix automatically:
 ```
-./vendor/bin/phpcbf --standard=./vendor/maagiline/maagiline-phpcs/ruleset.xml
+./vendor/bin/phpcbf --standard=./phpcs-ruleset.xml
 ```
