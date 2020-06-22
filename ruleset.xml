@@ -47,7 +47,7 @@
 
     <!-- Require typehints, NO space before return typehint, NO long typehints and ? when nullable -->
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.traversableTypeHints"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingTraversableTypeHintSpecification"/>
         <type>warning</type>
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
