@@ -21,6 +21,10 @@ Here's an example of a ruleset.xml that you should use for a Laravel project:
     <file>./app/</file>
     <file>./database/</file>
 
+    <!-- If you wish to exclude some paths -->
+    <exclude-pattern>./database/</exclude-pattern>
+    <!-- <exclude-pattern>./app/some-auto-generated-files-perhaps</exclude-pattern> -->
+
     <!-- Dont require namespace in migrations -->
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <exclude-pattern>./database/</exclude-pattern>
