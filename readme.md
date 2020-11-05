@@ -15,21 +15,24 @@ Here's an example of a ruleset.xml that you should use for a Laravel project:
 ```
 <?xml version="1.0"?>
 <ruleset>
+    <!-- For setup guide refer to vendor/maagiline/maagiline-phpcs/readme.md-->
     <rule ref="./vendor/maagiline/maagiline-phpcs"/>
 
-    <!-- Specify which directories to scan -->
-    <file>./app/</file>
-    <file>./database/</file>
-
-    <!-- If you wish to exclude some paths -->
-    <exclude-pattern>./database/</exclude-pattern>
-    <!-- <exclude-pattern>./app/some-auto-generated-files-perhaps</exclude-pattern> -->
+    <!-- Don't scan these directories -->
+    <exclude-pattern>./bin/</exclude-pattern>
+    <exclude-pattern>./bootstrap/</exclude-pattern>
+    <exclude-pattern>./config/</exclude-pattern>
+    <exclude-pattern>./public/</exclude-pattern>
+    <exclude-pattern>./resources/</exclude-pattern>
+    <exclude-pattern>./storage/</exclude-pattern>
+    <exclude-pattern>./vendor/</exclude-pattern>
 
     <!-- Dont require namespace in migrations -->
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <exclude-pattern>./database/</exclude-pattern>
     </rule>
 </ruleset>
+
 ```
 ## Conflicts with framework
 When adding to a project that's built on top of a framework (such as Laravel), please note that some files that are provided by the framework may not be in accordance with the ruleset. Problems arise when you wish to fix files that are extending some framework files - the fixed function definition may not be in accordance with the extended class:
