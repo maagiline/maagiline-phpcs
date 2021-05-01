@@ -11,7 +11,7 @@ Then, create a ruleset in you project directory. The ruleset should:
 - Refer to the maagiline-phpcs ruleset for instructions
 - Specify which files / directories to scan
 
-Here's an example of a ruleset.xml that you should use for a Laravel project:
+Here's an example of a `ruleset.xml` that you should use for a Laravel project:
 ```
 <?xml version="1.0"?>
 <ruleset>
@@ -71,7 +71,7 @@ Code sniffing will instruct your editor to display style issues in your code.
 1. In PhpStorm settings, navigate to Editor > Inspections > Quality tools > PHP_Codesniffer validation
 1. Check this option
 1. Set Severity to "Error"
-1. In Coding standard, select custom and select `./phpcs-ruleset.xml`
+1. In Coding standard, select custom and select `./ruleset.xml` (pointing to the `ruleset.xml` that you created in your project root)
 
 ![Codesniffer settings in PhpStorm](./docs/codesniffer-settings.png "Codesniffer settings in PhpStorm")
 
@@ -87,7 +87,7 @@ First, add phpcbf under "External tools".
 Name:               phpcbf
 Description:        Fixed phpcs issues automatically
 Program:            $ProjectFileDir$/vendor/squizlabs/php_codesniffer/bin/phpcbf
-Arguments:          --standard=$ProjectFileDir$/phpcs-ruleset.xml $FileDir$/$FileName$
+Arguments:          --standard=$ProjectFileDir$/ruleset.xml $FileDir$/$FileName$
 Working directory:  $ProjectFileDir$
 
 Under 'Advanced options', uncheck "Open console for tool output".
@@ -108,10 +108,10 @@ Now, whenever in a file that has errors, tap this to run phpcbf. All errors that
 ## Command line tools
 To list errors:
 ```
-./vendor/bin/phpcs --standard=./phpcs-ruleset.xml
+./vendor/bin/phpcs --standard=./ruleset.xml
 ```
 
 Some errors can be fixed automatically. To fix automatically:
 ```
-./vendor/bin/phpcbf --standard=./phpcs-ruleset.xml
+./vendor/bin/phpcbf --standard=./ruleset.xml
 ```
