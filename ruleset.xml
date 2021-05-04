@@ -3,6 +3,18 @@
     <description>Maagiline coding standard</description>
     <rule ref="PSR12"/>
 
+    <!-- Ban some functions -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array">
+                <element key="array" value="null"/>
+                <element key="var_dump" value="null"/>
+                <element key="dump" value="null"/>
+                <element key="dd" value="null"/>
+            </property>
+        </properties>
+    </rule>
+
     <!-- Require 4 indents for arrays-->
     <rule ref="Generic.Arrays.ArrayIndent">
         <properties>
@@ -20,6 +32,12 @@
         <type>warning</type>
     </rule>
 
+    <rule ref="Generic.Formatting.SpaceAfterCast">
+        <properties>
+            <property name="spacing" value="1"/>
+        </properties>
+    </rule>
+
     <!-- Require spaces after string concatenation -->
     <rule ref="Squiz.Strings.ConcatenationSpacing">
         <properties>
@@ -27,6 +45,14 @@
             <property name="ignoreNewlines" value="true"/>
         </properties>
         <type>warning</type>
+    </rule>
+
+    <rule ref="Squiz.Strings.DoubleQuoteUsage">
+        <type>warning</type>
+    </rule>
+
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+        <severity>0</severity>
     </rule>
 
     <!-- Require one empty line inbetween functions and no empty lines before first and after last function -->
@@ -38,11 +64,6 @@
         </properties>
     </rule>
 
-    <rule ref="Squiz.Commenting.InlineComment">
-        <exclude name="Squiz.Commenting.InlineComment.DocBlock"/>
-        <type>warning</type>
-    </rule>
-
     <!-- relative path from PHPCS source location -->
     <config name="installed_paths" value="../../slevomat/coding-standard"/>
 
@@ -52,7 +73,6 @@
         <type>warning</type>
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification"/>
         <type>warning</type>
     </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing">
@@ -64,14 +84,18 @@
     <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue">
         <type>warning</type>
     </rule>
-    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
-        <type>warning</type>
-    </rule>
     <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
         <properties>
             <property name="newlinesCountBetweenOpenTagAndDeclare" value="2" />
             <property name="newlinesCountAfterDeclare" value="2" />
             <property name="spacesCountAroundEqualsSign" value="0" />
+        </properties>
+        <type>warning</type>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true" />
         </properties>
         <type>warning</type>
     </rule>
@@ -118,6 +142,44 @@
         </properties>
     </rule>
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+        <type>warning</type>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration">
+        <type>warning</type>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Commenting.UselessFunctionDocComment">
+        <type>warning</type>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Commenting.ForbiddenAnnotations">
+        <properties>
+            <property name="forbiddenAnnotations" type="array">
+                <element value="@author"/>
+                <element value="@created"/>
+                <element value="@version"/>
+                <element value="@package"/>
+                <element value="@copyright"/>
+                <element value="@license"/>
+                <element value="@throws"/>
+            </property>
+        </properties>
+        <type>warning</type>
+    </rule>
+
+    <rule ref="Squiz.Commenting.InlineComment">
+        <exclude name="Squiz.Commenting.InlineComment.DocBlock"/>
+        <type>warning</type>
+    </rule>
+
+    <!-- Remove silly Class ClassName comments from legacy code-->
+    <rule ref="SlevomatCodingStandard.Commenting.ForbiddenComments">
+        <properties>
+            <property name="forbiddenCommentPatterns" type="array">
+                <element value="~^Class \S+~"/>
+            </property>
+        </properties>
         <type>warning</type>
     </rule>
 

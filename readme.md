@@ -37,24 +37,45 @@ Here's an example of a `ruleset.xml` that you should use for a Laravel project:
 ## Conflicts with framework
 When adding to a project that's built on top of a framework (such as Laravel), please note that some files that are provided by the framework may not be in accordance with the ruleset. Problems arise when you wish to fix files that are extending some framework files - the fixed function definition may not be in accordance with the extended class:
 ```
-// Before:
+// Imaginary class from framework.
+class Parent
+{
+    /**
+     * @param string $name
+     * @return void
+     */
+    protected function hello($name) {/* ... */}
+}
+
+// Our extending class.
 /**
  * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
  * @return void
  */
-protected function schedule($schedule)
+class Child extends Parent
+{
+    /**
+     * @param string $name
+     * @return void
+     */
+    protected function hello($name) {/* ... */}
+}
 
-// After fixing:
-protected function schedule(Schedule $schedule): void
+// Phpcbf will change it to:
+/**
+ * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+ * @return void
+ */
+protected function schedule(string $schedule): void
 ```
 
-In the above example, the extended class does not specify a return value for this function, so an exception will be thrown. In this case, we should, instead of fixing, tell phpcs to ignore this issue:
+In the above example, the extended class does not specify a return value for this function, so an exception will be thrown, since child is incompatible with parent. In this case, we should, instead of fixing, tell phpcs to ignore this issue:
 ```
 // Before:
 /**
  * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
- * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
  * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
+ * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
  * @return void
  */
 protected function schedule($schedule)
