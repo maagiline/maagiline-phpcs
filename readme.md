@@ -48,10 +48,6 @@ class Parent
 }
 
 // Our extending class.
-/**
- * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
- * @return void
- */
 class Child extends Parent
 {
     /**
