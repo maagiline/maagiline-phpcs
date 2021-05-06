@@ -34,45 +34,6 @@ Here's an example of a `ruleset.xml` that you should use for a Laravel project:
 </ruleset>
 
 ```
-## Conflicts with framework
-When adding to a project that's built on top of a framework (such as Laravel), please note that some files that are provided by the framework may not be in accordance with the ruleset. Problems arise when you wish to fix files that are extending some framework files - the fixed function definition may not be in accordance with the extended class:
-```
-// Imaginary class from framework.
-class Parent
-{
-    /**
-     * @param string $name
-     * @return void
-     */
-    protected function hello($name) {/* ... */}
-}
-
-// Our extending class.
-class Child extends Parent
-{
-    /**
-     * @param string $name
-     * @return void
-     */
-    protected function hello($name) {/* ... */}
-}
-
-// Phpcbf will change it to:
-protected function schedule(string $schedule): void
-```
-
-In the above example, the extended class does not specify a return value for this function, so an exception will be thrown, since child is incompatible with parent. In this case, we should, instead of fixing, tell phpcs to ignore this issue:
-```
-/**
- * Suppress phpcs errors. We can't use strict typing because the method is inherited from a dependency.
- *
- * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
- * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
- */
-protected function schedule($schedule)
-```
-
-Now, phpcs will not consider this as an error. You're good to go!
 
 ## Set up in PhpStorm
 ### Set up code sniffing
