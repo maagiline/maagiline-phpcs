@@ -58,21 +58,16 @@ class Child extends Parent
 }
 
 // Phpcbf will change it to:
-/**
- * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
- * @return void
- */
 protected function schedule(string $schedule): void
 ```
 
 In the above example, the extended class does not specify a return value for this function, so an exception will be thrown, since child is incompatible with parent. In this case, we should, instead of fixing, tell phpcs to ignore this issue:
 ```
-// Before:
 /**
+ * Suppress phpcs errors. We can't use strict typing because the method is inherited from a dependency.
+ *
  * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
  * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
- * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
- * @return void
  */
 protected function schedule($schedule)
 ```
