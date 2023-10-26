@@ -105,6 +105,21 @@
         <type>warning</type>
     </rule>
 
+    <!-- Require commas after last argument in multi-line call -->
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall">
+        <type>warning</type>
+    </rule>
+
+    <!-- Require commas after last argument in multi-line closure call -->
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInClosureUse">
+        <type>warning</type>
+    </rule>
+
+    <!-- Require commas after last argument in multi-line method declaration -->
+    <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration">
+        <type>warning</type>
+    </rule>
+
     <!-- NO useless or unused variables -->
     <rule ref="SlevomatCodingStandard.Variables.UselessVariable">
         <type>warning</type>
