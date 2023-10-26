@@ -120,6 +120,13 @@
         <type>warning</type>
     </rule>
 
+    <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent">
+        <properties>
+            <property name="indent" value="4" />
+        </properties>
+    </rule>
+
+
     <!-- NO useless or unused variables -->
     <rule ref="SlevomatCodingStandard.Variables.UselessVariable">
         <type>warning</type>
