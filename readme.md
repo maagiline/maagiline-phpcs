@@ -19,13 +19,13 @@ Here's an example of a `ruleset.xml` that you should use for a Laravel project:
     <rule ref="./vendor/maagiline/maagiline-phpcs"/>
 
     <!-- Don't scan these directories -->
-    <exclude-pattern>./bin/</exclude-pattern>
-    <exclude-pattern>./bootstrap/</exclude-pattern>
-    <exclude-pattern>./config/</exclude-pattern>
-    <exclude-pattern>./public/</exclude-pattern>
-    <exclude-pattern>./resources/</exclude-pattern>
-    <exclude-pattern>./storage/</exclude-pattern>
-    <exclude-pattern>./vendor/</exclude-pattern>
+    <exclude-pattern type="relative">./bin/</exclude-pattern>
+    <exclude-pattern type="relative">./bootstrap/</exclude-pattern>
+    <exclude-pattern type="relative">./config/</exclude-pattern>
+    <exclude-pattern type="relative">./public/</exclude-pattern>
+    <exclude-pattern type="relative">./resources/</exclude-pattern>
+    <exclude-pattern type="relative">./storage/</exclude-pattern>
+    <exclude-pattern type="relative">./vendor/</exclude-pattern>
 
     <!-- Dont require namespace in migrations -->
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
